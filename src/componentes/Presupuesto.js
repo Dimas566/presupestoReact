@@ -1,7 +1,9 @@
 import React, { Fragment,useState } from "react";
 import Error from './Error';
+import PropTypes from 'prop-types';
 
-const Presuesto = ({guardarPresupuesto, guardarRestante}) => {
+
+const Presuesto = ({guardarPresupuesto, guardarRestante, actualizarPregunta}) => {
 
     ///Definir el State
     const [cantidad, guardarCantidad] = useState(0);
@@ -25,6 +27,7 @@ const Presuesto = ({guardarPresupuesto, guardarRestante}) => {
         guardarError(false);
         guardarPresupuesto(cantidad);
         guardarRestante(cantidad);
+        actualizarPregunta(false)
     }
   return (
     <Fragment>
@@ -47,5 +50,12 @@ const Presuesto = ({guardarPresupuesto, guardarRestante}) => {
     </Fragment>
   );
 };
+
+Presuesto.propTypes = {
+  guardarPresupuesto: PropTypes.func.isRequired,
+  guardarRestante: PropTypes.func.isRequired,
+  actualizarPregunta: PropTypes.func.isRequired
+
+}
 
 export default Presuesto;
